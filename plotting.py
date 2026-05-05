@@ -62,8 +62,8 @@ def plot_all(
     cols: int = 3,
     save_path: Optional[str] = None,
 ) -> plt.Figure:
-    
-    
+
+
     """Griglia di tutti i pannelli, uno per iterazione."""
     n = len(result.iterations)
     rows = math.ceil(n / cols)
@@ -78,6 +78,28 @@ def plot_all(
     for j in range(n, len(axes)):
         axes[j].set_visible(False)
 
+    fig.suptitle(
+        f"Piyavskii-Shubert — gap finale: {result.gap:.4f}, ε={result.epsilon}",
+        fontsize=10, fontweight="bold",
+    )
+    fig.tight_layout()
+    if save_path:
+        fig.savefig(save_path, dpi=150, bbox_inches="tight")
+    return fig
+
+
+def plot_last(
+    func: Callable,
+    a: float,
+    b: float,
+    L: float,
+    result: Result,
+    save_path: Optional[str] = None,
+) -> plt.Figure:
+    """Singolo pannello con l'ultima iterazione."""
+    fig, ax = plt.subplots(figsize=(7, 4.5))
+    _draw_panel(ax, func, a, b, L, result.iterations[-1])
+    ax.legend(fontsize=8, loc="upper right")
     fig.suptitle(
         f"Piyavskii-Shubert — gap finale: {result.gap:.4f}, ε={result.epsilon}",
         fontsize=10, fontweight="bold",

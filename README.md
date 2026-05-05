@@ -184,6 +184,4 @@ R = (f(x_l) + f(x_r)) / 2 − L · (x_r − x_l) / 2
 
 L'algoritmo termina quando `Z⁺_s − R_s ≤ ε`, garantendo che il punto restituito sia a distanza al massimo `ε` dal valore del minimo globale reale.
 
-## Licenza
 
-MIT

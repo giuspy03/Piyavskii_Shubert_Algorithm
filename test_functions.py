@@ -5,7 +5,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 #from algorithm import run
 from algoritm_optimized import run
-from plotting import plot_all
+from plotting import plot_last
 import time
 
 
@@ -361,14 +361,13 @@ def main():
         print(f"[{f['name']}]  iterazioni={result.n_iterations}  "
               f"x*={result.x_star:.4f}  f*={result.f_star:.4f}  "
               f"gap={result.gap:.4f}  convergenza={result.convergenza}, tempo={elapsed_ms} ms")
-        '''
-        fig = plot_all(
+        
+        fig = plot_last(
             f["func"], f["a"], f["b"], f["L"], result,
-            cols=3,
             save_path=os.path.join(output_dir, f["tag"] + "_iterazioni.png"),
         )
         plt.close(fig)
-        '''
+        
 
     print("\nGrafici salvati in ./" + output_dir + "/")
 
